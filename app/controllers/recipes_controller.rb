@@ -23,7 +23,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new
 
     @recipe.name = params.fetch("name")
-    @recipe.image = params.fetch("image")
+    @recipe.image = params.fetch("image") if params.key?("image")
 
     if @recipe.valid?
       @recipe.save
@@ -44,7 +44,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params.fetch("id_to_modify"))
 
     @recipe.name = params.fetch("name")
-    @recipe.image = params.fetch("image")
+    @recipe.image = params.fetch("image") if params.key?("image")
 
     if @recipe.valid?
       @recipe.save
